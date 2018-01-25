@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +16,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.android.unit5mid.R;
+import com.example.android.unit5mid.controller.ResultsAdapter;
+import com.example.android.unit5mid.model.Name;
 import com.example.android.unit5mid.model.Results;
 import com.example.android.unit5mid.network.GetResults;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +37,8 @@ public class MainFragment extends Fragment {
     RecyclerView recyclerView;
     GetResults resultService;
     private final String TAG = "";
+    ResultsAdapter resultsAdapter;
+    Context context;
 
 
     public MainFragment() {
@@ -42,7 +50,21 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        context = rootView.getContext();
         recyclerView = rootView.findViewById(R.id.recyclerView);
+
+//        View itemView = rootView.findViewById(R.id.itemView);
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                DetailFragment detailFragment = new DetailFragment();
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_container, detailFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -52,11 +74,18 @@ public class MainFragment extends Fragment {
 
         resultService = retrofit.create(GetResults.class);
 
-        Call<Results> results = resultService.getResults();
+        final Call<Results> results = resultService.getResultsNetwork();
         results.enqueue(new Callback<Results>() {
             @Override
             public void onResponse(Call<Results> call, Response<Results> response) {
                 Log.d(TAG, "onResponse" + response.body());
+
+               // resultsAdapter = new ResultsAdapter(response.body().getEmail());
+                recyclerView.setAdapter(resultsAdapter);
+                //GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context.getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                recyclerView.setLayoutManager(linearLayoutManager);
+
             }
 
             @Override
@@ -67,18 +96,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-
-        View itemView = rootView.findViewById(R.id.itemView);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DetailFragment detailFragment = new DetailFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, detailFragment);
-                fragmentTransaction.commit();
-            }
-        });
 
         return rootView;
     }

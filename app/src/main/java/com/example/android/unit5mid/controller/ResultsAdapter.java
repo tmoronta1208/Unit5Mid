@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.unit5mid.R;
+import com.example.android.unit5mid.model.Name;
 import com.example.android.unit5mid.model.Results;
 import com.example.android.unit5mid.views.ResultsViewHolder;
 
@@ -30,6 +31,9 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsViewHolder> {
 
     @Override
     public void onBindViewHolder(ResultsViewHolder holder, int position) {
+
+        Results results  = myResults.get(position);
+        holder.onBind(results);
 
     }
 

@@ -1,5 +1,7 @@
 package com.example.android.unit5mid.model;
 
+import java.util.List;
+
 /**
  * Created by TatianaM on 1/24/18.
  */
@@ -7,17 +9,17 @@ package com.example.android.unit5mid.model;
 public class Results {
 
     private String results;
-    private Name name;
-    private Location location;
+    private List<Name> name;
+    private List<Location> location;
     private String email;
     private String dob;
     private String cell;
 
-    public Name getName() {
+    public List<Name> getName() {
         return name;
     }
 
-    public void setName(Name name) {
+    public void setName(List<Name> name) {
         this.name = name;
     }
 
@@ -29,11 +31,11 @@ public class Results {
         this.results = results;
     }
 
-    public Location getLocation() {
+    public List<Location> getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(List<Location> location) {
         this.location = location;
     }
 

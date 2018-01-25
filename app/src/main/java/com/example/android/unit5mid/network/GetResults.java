@@ -12,5 +12,5 @@ import retrofit2.http.GET;
 public interface GetResults {
 
     @GET("?nat=us&inc=name,location,cell,email,dob,picture&results=20")
-    Call<Results> getResults();
+    Call<Results> getResultsNetwork();
 }
