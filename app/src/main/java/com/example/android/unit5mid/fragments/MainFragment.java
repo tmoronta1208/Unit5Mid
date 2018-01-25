@@ -80,7 +80,7 @@ public class MainFragment extends Fragment {
             public void onResponse(Call<Results> call, Response<Results> response) {
                 Log.d(TAG, "onResponse" + response.body());
 
-               // resultsAdapter = new ResultsAdapter(response.body().getEmail());
+                //resultsAdapter = new ResultsAdapter(response.body().getName());
                 recyclerView.setAdapter(resultsAdapter);
                 //GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context.getApplicationContext(), LinearLayoutManager.VERTICAL, false);

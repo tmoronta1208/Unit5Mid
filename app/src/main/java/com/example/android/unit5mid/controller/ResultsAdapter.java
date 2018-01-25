@@ -15,11 +15,11 @@ import java.util.List;
 
 public class ResultsAdapter extends RecyclerView.Adapter<ResultsViewHolder> {
 
-    List<Results> myResults;
+    List<Name> myNames;
 
 
-    public ResultsAdapter(List<Results> myResults) {
-        this.myResults = myResults;
+    public ResultsAdapter(List<Name> myNames) {
+        this.myNames= myNames;
     }
 
     @Override
@@ -32,13 +32,13 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsViewHolder> {
     @Override
     public void onBindViewHolder(ResultsViewHolder holder, int position) {
 
-        Results results  = myResults.get(position);
-        holder.onBind(results);
+        Name name = myNames.get(position);
+        holder.onBind(name);
 
     }
 
     @Override
     public int getItemCount() {
-        return myResults.size();
+        return myNames.size();
     }
 }

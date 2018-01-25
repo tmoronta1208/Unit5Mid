@@ -9,17 +9,17 @@ import java.util.List;
 public class Results {
 
     private String results;
-    private List<Name> name;
-    private List<Location> location;
+    private Name[] name;
+    private Location[] location;
     private String email;
     private String dob;
     private String cell;
 
-    public List<Name> getName() {
+    public Name[] getName() {
         return name;
     }
 
-    public void setName(List<Name> name) {
+    public void setName(Name[] name) {
         this.name = name;
     }
 
@@ -31,11 +31,11 @@ public class Results {
         this.results = results;
     }
 
-    public List<Location> getLocation() {
+    public Location[] getLocation() {
         return location;
     }
 
-    public void setLocation(List<Location> location) {
+    public void setLocation(Location[] location) {
         this.location = location;
     }
 

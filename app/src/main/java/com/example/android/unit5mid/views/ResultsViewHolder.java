@@ -25,9 +25,9 @@ public class ResultsViewHolder extends ViewHolder {
 
     }
 
-    public void onBind(Results results){
+    public void onBind(Name name){
 
-        textView.setText(results.getEmail());
+        textView.setText(name.getFirst());
 
     }
 }
