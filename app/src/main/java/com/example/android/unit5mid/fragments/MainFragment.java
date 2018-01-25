@@ -29,10 +29,8 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        TextView textView = rootView.findViewById(R.id.textView);
-
-      //  View itemView = rootView.findViewById(R.id.itemView);
-        textView.setOnClickListener(new View.OnClickListener() {
+        View itemView = rootView.findViewById(R.id.itemView);
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DetailFragment detailFragment = new DetailFragment();
