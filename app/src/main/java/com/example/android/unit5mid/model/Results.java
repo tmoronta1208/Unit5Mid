@@ -6,6 +6,7 @@ package com.example.android.unit5mid.model;
 
 public class Results {
 
+    private String results;
     private Name name;
     private Location location;
     private String email;
@@ -18,6 +19,14 @@ public class Results {
 
     public void setName(Name name) {
         this.name = name;
+    }
+
+    public String getResults() {
+        return results;
+    }
+
+    public void setResults(String results) {
+        this.results = results;
     }
 
     public Location getLocation() {
